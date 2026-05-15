@@ -3,7 +3,7 @@
         <head>
             <meta charset="utf-8"/>
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover, shrink-to-fit=no"/>
             <!--metatextblock-->
             <title>kids</title>
             <meta property="og:url" content="http://save-thedate.ru/kidswedding"/>
@@ -1702,6 +1702,39 @@
                             width: 255px;
                         }
                     }
+                        /* Фиксы для iPhone */
+                    html {
+                        -webkit-text-size-adjust: 100%;
+                        text-size-adjust: 100%;
+                    }
+
+                    * {
+                        -webkit-tap-highlight-color: transparent;
+                    }
+
+                    /* Принудительно фиксируем ширину на телефонах */
+                    .t396__artboard {
+                        width: 100% !important;
+                        max-width: 100% !important;
+                        overflow-x: hidden !important;
+                    }
+
+                    /* Чтобы картинки не растягивались */
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+
+                    /* Фикс для блоков Tilda на iPhone */
+                    .t396__elem {
+                        max-width: 100%;
+                    }
+
+                    /* Чтобы текст не становился огромным на iPhone */
+                    .tn-atom {
+                        max-width: 100%;
+                        word-wrap: break-word;
+                    }
                 </style>
                 <div class='t396'>
                 <div class="t396__artboard" data-artboard-recid="1432877881" data-artboard-screens="320,480,640,960,1200" data-artboard-height="492" data-artboard-valign="center" data-artboard-upscale="window" data-artboard-height-res-320="423" data-artboard-height-res-480="528" data-artboard-height-res-640="516" data-artboard-height-res-960="492">
@@ -1716,7 +1749,7 @@
                 <!-- Фото (исходный размер, не увеличиваем) -->
                 <div class='t396__elem tn-elem tn-elem__14328778811759740402319' data-elem-id='1759740402319' data-elem-type='image' data-field-top-value="69" data-field-left-value="78" data-field-height-value="143" data-field-width-value="200" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-heightunits-value="px" data-field-widthunits-value="px" data-field-filewidth-value="1262" data-field-fileheight-value="849" data-field-heightmode-value="hug" data-field-top-res-320-value="130" data-field-left-res-320-value="33" data-field-height-res-320-value="182" data-field-width-res-320-value="255" data-field-container-res-320-value="grid" data-field-widthmode-res-320-value="fixed" data-field-top-res-480-value="81" data-field-left-res-480-value="24" data-field-height-res-480-value="329" data-field-width-res-480-value="433" data-field-top-res-640-value="96" data-field-left-res-640-value="124" data-field-height-res-640-value="298" data-field-width-res-640-value="392">
                     <div class='tn-atom'>
-                        <img class='tn-atom__img' src='kostel.png' alt='' style='object-fit: cover; height: 100%; width: 100%;'/>
+                        <img class='tn-atom__img' src='kostel.png' alt='' style='object-fit: contain; max-width: 100%; height: auto;'/>
                     </div>
                 </div>
 
@@ -3213,6 +3246,21 @@
                     }
                     )(document, window, 'e907dc1c313a3e20713bbfeb7d3fba48', 'script', 'https://static.tildacdn.com/js/tilda-stat-1.0.min.js');
                 }, 2000);
+            </script>
+            <script>
+            // Фикс для iPhone — принудительно пересчитываем ширину
+            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.style.width = '100%';
+                    document.body.style.overflowX = 'hidden';
+                    var artboards = document.querySelectorAll('.t396__artboard');
+                    artboards.forEach(function(board) {
+                        board.style.width = '100%';
+                        board.style.maxWidth = '100%';
+                        board.style.overflowX = 'hidden';
+                    });
+                });
+            }
             </script>
         </body>
     </html>	
